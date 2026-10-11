@@ -1,0 +1,153 @@
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Georgia', 'Segoe UI', serif; }
+
+body {
+  background: #1a1410;
+  background-image:
+    radial-gradient(circle at 20% 30%, rgba(212,175,55,0.08) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(139,69,19,0.1) 0%, transparent 50%);
+  color: #f0e6d2; min-height: 100vh; overflow-x: hidden;
+}
+
+.screen { display: none; padding: 30px 20px; max-width: 900px; margin: 0 auto; min-height: 100vh; }
+.screen.active { display: flex; flex-direction: column; justify-content: center; align-items: center; }
+
+/* INTRO */
+.intro-content { text-align: center; animation: fadeInUp 1.2s ease; }
+.intro-icon { font-size: 5em; margin-bottom: 15px; animation: pulse 2s infinite; }
+.intro-title {
+  font-size: 2.4em; color: #d4af37; letter-spacing: 4px;
+  text-shadow: 0 0 25px rgba(212,175,55,0.7);
+  margin-bottom: 12px; font-family: 'Georgia', serif;
+}
+.intro-tagline { font-size: 1em; color: #c9a961; margin-bottom: 8px; font-style: italic; }
+.intro-sub { font-size: 0.9em; color: #999; margin-bottom: 30px; }
+.intro-features { display: flex; gap: 20px; justify-content: center; margin-bottom: 30px; flex-wrap: wrap; }
+.intro-features span {
+  background: rgba(212,175,55,0.1); padding: 8px 16px;
+  border: 1px solid rgba(212,175,55,0.4); border-radius: 5px;
+  font-size: 0.85em; color: #d4af37;
+}
+
+/* BUTTONS */
+.btn-detective {
+  padding: 14px 38px; background: linear-gradient(135deg, #d4af37, #b8860b);
+  color: #1a1410; border: 2px solid #d4af37; border-radius: 5px;
+  font-weight: bold; font-size: 1em; cursor: pointer;
+  letter-spacing: 2px; transition: all 0.3s;
+  font-family: 'Georgia', serif; text-transform: uppercase;
+}
+.btn-detective:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(212,175,55,0.5); }
+
+/* HERO/BADGE SELECT — 5 CARDS FIT */
+.screen-title {
+  font-size: 1.6em; color: #d4af37; margin-bottom: 30px;
+  text-align: center; font-family: 'Georgia', serif; letter-spacing: 2px;
+}
+
+.hero-select {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 15px;
+  width: 100%;
+  max-width: 850px;
+  margin-bottom: 30px;
+}
+
+.hero-card {
+  padding: 18px 12px;
+  border: 2px dashed #8b6914;
+  border-radius: 8px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s;
+  background: rgba(212,175,55,0.05);
+}
+.hero-card:hover {
+  border-color: #d4af37;
+  background: rgba(212,175,55,0.15);
+  transform: translateY(-5px);
+}
+.hero-card.selected {
+  border-color: #d4af37;
+  border-style: solid;
+  background: rgba(212,175,55,0.25);
+  box-shadow: 0 0 20px rgba(212,175,55,0.6);
+}
+.hero-card h3 { color: #d4af37; margin-bottom: 5px; font-size: 0.95em; }
+.hero-card p { font-size: 0.7em; color: #bbb; font-style: italic; }
+
+/* CASE BRIEF */
+.case-file {
+  max-width: 600px; padding: 40px; background: #f5ecd7;
+  color: #2a1a0a; border-radius: 5px; position: relative;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.7);
+  animation: fadeInUp 0.8s ease;
+}
+.case-stamp {
+  position: absolute; top: 20px; right: 20px; padding: 6px 14px;
+  border: 3px solid #b71c1c; color: #b71c1c;
+  font-weight: bold; letter-spacing: 2px; font-size: 0.8em;
+  transform: rotate(8deg); opacity: 0.7;
+}
+.case-title { font-size: 1.6em; color: #8b0000; margin-bottom: 20px; }
+.case-desc { font-size: 1em; line-height: 1.7; margin-bottom: 25px; font-style: italic; }
+
+/* BATTLE/INVESTIGATION */
+.investigation-header { text-align: center; margin-bottom: 20px; }
+.case-badge {
+  display: inline-block; padding: 10px 25px;
+  background: rgba(212,175,55,0.15); color: #d4af37;
+  border: 2px solid rgba(212,175,55,0.5); border-radius: 5px;
+  font-weight: bold; font-size: 0.9em; letter-spacing: 2px;
+}
+.suspect-name { color: #ccc; margin-top: 12px; font-style: italic; font-size: 0.95em; }
+
+.progress-bar { width: 100%; height: 6px; background: #2a1a0a; border-radius: 3px; margin-bottom: 20px; overflow: hidden; }
+.progress-fill { height: 100%; width: 0%; background: linear-gradient(90deg, #d4af37, #b8860b); transition: width 0.4s; }
+
+.stats-bar {
+  display: flex; justify-content: space-around; flex-wrap: wrap;
+  gap: 10px; margin-bottom: 20px; font-size: 0.85em;
+  background: rgba(0,0,0,0.4); padding: 12px; border-radius: 5px;
+  border: 1px solid rgba(212,175,55,0.2);
+  width: 100%;
+}
+.stats-bar span { color: #d4af37; font-weight: bold; margin-left: 5px; }
+
+.question-box {
+  background: #f5ecd7; color: #2a1a0a; padding: 25px;
+  border-radius: 5px; margin-bottom: 20px; position: relative;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+  border-left: 5px solid #8b0000;
+  width: 100%;
+}
+.clue-label {
+  font-size: 0.75em; color: #8b0000; letter-spacing: 3px;
+  font-weight: bold; margin-bottom: 10px;
+}
+.question-text { font-size: 1.05em; margin-bottom: 20px; line-height: 1.6; }
+
+.options { display: grid; gap: 10px; }
+.option {
+  padding: 13px 18px; background: #fff8e7;
+  border: 2px solid #c9b88a; border-radius: 4px;
+  cursor: pointer; transition: all 0.3s; text-align: left;
+  color: #2a1a0a; font-size: 0.95em; font-family: 'Georgia', serif;
+}
+.option:hover { border-color: #8b0000; background: #fff0d0; transform: translateX(5px); }
+.option.correct { background: #c8e6c9; border-color: #2e7d32; color: #1b5e20; }
+.option.wrong { background: #ffcdd2; border-color: #b71c1c; color: #8b0000; }
+.option:disabled { cursor: not-allowed; }
+
+.feedback { text-align: center; margin-top: 15px; font-size: 1em; min-height: 30px; color: #d4af37; font-style: italic; }
+.winner { text-align: center; font-size: 1.2em; color: #d4af37; margin: 20px 0; line-height: 1.6; white-space: pre-line; }
+
+/* ANIMATIONS */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+}
